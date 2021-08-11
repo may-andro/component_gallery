@@ -1,5 +1,10 @@
-import 'package:component_gallery/component/button/primary_button/component_primary_button.dart';
-import 'package:component_gallery/component/button/prominent_button/component_prominent_button.dart';
+import 'package:component_gallery/component/button/primary_button/config_inactive.dart';
+import 'package:component_gallery/component/button/primary_button/config_large.dart';
+import 'package:component_gallery/component/button/primary_button/config_loading.dart';
+import 'package:component_gallery/component/button/primary_button/config_normal.dart';
+import 'package:component_gallery/component/button/prominent_button/config_active.dart';
+import 'package:component_gallery/component/button/prominent_button/config_inactive.dart';
+import 'package:component_gallery/component/button/prominent_button/config_loading.dart';
 import 'package:component_gallery/component/button/secondary_button/component_secondary_button.dart';
 import 'package:component_gallery/model/component.dart';
 import 'package:component_gallery/model/component_category.dart';
@@ -16,20 +21,20 @@ List<Component> buttonComponent() {
         ComponentConfiguration(
           title: 'Prominent Button',
           description: 'This configuration is used when state is enabled',
-          widgetPath: 'lib/component/button/prominent_button/component_prominent_button.dart',
-          widget: ComponentProminentButton.normal(),
+          widgetPath: 'lib/component/button/prominent_button/config_active.dart',
+          widget: ConfigActiveProminentButton(),
         ),
         ComponentConfiguration(
           title: 'Loading Prominent Button',
           description: 'This configuration is used when state is loading',
-          widgetPath: 'lib/component/button/prominent_button/component_prominent_button.dart',
-          widget: ComponentProminentButton.loading(),
+          widgetPath: 'lib/component/button/prominent_button/config_loading.dart',
+          widget: ConfigLoadingProminentButton(),
         ),
         ComponentConfiguration(
           title: 'Disabled Prominent Button',
           description: 'This configuration is used when state is disabled',
-          widgetPath: 'lib/component/button/prominent_button/component_prominent_button.dart',
-          widget: ComponentProminentButton.disabled(),
+          widgetPath: 'lib/component/button/prominent_button/config_inactive.dart',
+          widget: ConfigInActiveProminentButton(),
         ),
       ],
       category: ComponentCategory.button,
@@ -40,22 +45,28 @@ List<Component> buttonComponent() {
       subtitle: 'Used only one time per screen',
       configurations: [
         ComponentConfiguration(
-          title: 'Primary Button',
+          title: 'Active Primary Button',
           description: 'Used only one time per screen',
-          widgetPath: 'lib/component/button/prominent_button/component_primary_button.dart',
-          widget: ComponentPrimaryButton.normal(),
+          widgetPath: 'lib/component/button/primary_button/config_normal.dart',
+          widget: ConfigActivePrimaryButton(),
+        ),
+        ComponentConfiguration(
+          title: 'Large Primary Button',
+          description: 'Used only one time per screen when state is loading',
+          widgetPath: 'lib/component/button/primary_button/config_large.dart',
+          widget: ConfigLargePrimaryButton(),
         ),
         ComponentConfiguration(
           title: 'Loading Primary Button',
-          description: 'Used only one time per screen when state is loading',
-          widgetPath: 'lib/component/button/prominent_button/component_primary_button.dart',
-          widget: ComponentPrimaryButton.loading(),
+          description: 'Used only one time per screen when state is disabled',
+          widgetPath: 'lib/component/button/primary_button/config_loading.dart',
+          widget: ConfigLoadingPrimaryButton(),
         ),
         ComponentConfiguration(
-          title: 'Disabled Primary Button',
+          title: 'InActive Primary Button',
           description: 'Used only one time per screen when state is disabled',
-          widgetPath: 'lib/component/button/prominent_button/component_primary_button.dart',
-          widget: ComponentPrimaryButton.disabled(),
+          widgetPath: 'lib/component/button/primary_button/config_inactive.dart',
+          widget: ConfigInActivePrimaryButton(),
         ),
       ],
       category: ComponentCategory.button,

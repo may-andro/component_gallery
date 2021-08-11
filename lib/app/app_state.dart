@@ -13,7 +13,7 @@ class AppGlobalState {
     return AppGlobalState(
       ComponentGalleryOptions(
         themeMode: ThemeMode.system,
-        platform: defaultTargetPlatform,
+        platform: TargetPlatform.android,
       ),
     );
   }
@@ -42,6 +42,14 @@ class AppGlobalStateNotifier extends StateNotifier<AppGlobalState> {
     state = state.copy(
       newComponentGalleryOptions: state._componentGalleryOptions.copyWith(
         themeMode: themeMode,
+      ),
+    );
+  }
+
+  void setTargetPlatform(TargetPlatform platform) {
+    state = state.copy(
+      newComponentGalleryOptions: state._componentGalleryOptions.copyWith(
+        platform: platform,
       ),
     );
   }

@@ -6,24 +6,27 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'gallery_theme_data.dart';
 
+import 'package:component/theme/app_theme_provider.dart';
+
 class ComponentGalleryApp extends StatelessWidget {
   const ComponentGalleryApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, child) {
-      final _appState = context.read(appStateProvider);
+      final appState = context.read(appStateProvider);
+
       return MaterialApp(
         scrollBehavior: const MaterialScrollBehavior().copyWith(scrollbars: false),
         restorationScopeId: 'rootGallery',
         title: 'Component Gallery',
         debugShowCheckedModeBanner: false,
-        themeMode: _appState.getComponentGalleryOptions().themeMode,
+        themeMode: appState.getComponentGalleryOptions().themeMode,
         theme: GalleryThemeData.lightThemeData.copyWith(
-          platform: _appState.getComponentGalleryOptions().platform,
+          platform: appState.getComponentGalleryOptions().platform,
         ),
         darkTheme: GalleryThemeData.darkThemeData.copyWith(
-          platform: _appState.getComponentGalleryOptions().platform,
+          platform: appState.getComponentGalleryOptions().platform,
         ),
         home: HomePage(),
       );

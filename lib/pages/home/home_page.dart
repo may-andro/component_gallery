@@ -1,4 +1,8 @@
+import 'dart:collection';
+
 import 'package:component_gallery/pages/dashboard/dashboard_page.dart';
+import 'package:component_gallery/pages/dashboard/widget/header.dart';
+import 'package:component_gallery/pages/setting/model/setting_item.dart';
 import 'package:component_gallery/pages/setting/setting_page.dart';
 import 'package:component_gallery/utils/adaptive.dart';
 import 'package:component_gallery/utils/constants.dart';
@@ -41,10 +45,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       vsync: this,
       duration: const Duration(milliseconds: 500),
     );
-    _settingsPage = widget.settingsPage ??
-        SettingPage(
-          animationController: _settingsPanelController,
-        );
+    _settingsPage = widget.settingsPage ?? SettingPage();
     _dashboardPage = widget.dashboardPage ?? const DashboardPage();
   }
 
@@ -121,7 +122,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 padding: const EdgeInsets.only(top: 50),
                 child: Align(
                   alignment: Alignment.topCenter,
-                  child: Text('Air Quality'),
+                  child: Text(
+                    'Component Gallery',
+                    style: Theme.of(context).textTheme.headline6?.apply(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSizeDelta: isDisplayDesktop(context) ? desktopDisplay1FontDelta : 0,
+                        ),
+                  ),
                 ),
               ),
             ),
