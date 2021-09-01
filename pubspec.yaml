@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  adaptive_breakpoints: ^0.0.5
+  adaptive_breakpoints: ^0.1.0
   animations: ^2.0.1
   collection: ^1.15.0
   cupertino_icons: ^1.0.3
@@ -26,10 +26,13 @@ dev_dependencies:
     sdk: flutter
   component:
     path: component
+  rxdart: ^0.27.1
+  font_awesome_flutter: ^9.1.0
 
 flutter:
   uses-material-design: true
   assets:
+    - assets/image/material.png
     - lib/component/button/prominent_button/
     - lib/component/button/primary_button/
     - lib/component/button/secondary_button/

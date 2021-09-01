@@ -12,8 +12,7 @@ class GalleryThemeData {
   static final Color _lightFocusColor = Colors.black.withOpacity(0.12);
   static final Color _darkFocusColor = Colors.white.withOpacity(0.12);
 
-  static ThemeData lightThemeData =
-      themeData(lightColorScheme, _lightFocusColor);
+  static ThemeData lightThemeData = themeData(lightColorScheme, _lightFocusColor);
   static ThemeData darkThemeData = themeData(darkColorScheme, _darkFocusColor);
 
   static ThemeData themeData(ColorScheme colorScheme, Color focusColor) {
@@ -66,7 +65,8 @@ class GalleryThemeData {
     secondaryVariant: Color(0xFF451B6F),
     background: Color(0xFF241E30),
     surface: Color(0xFF1F1929),
-    onBackground: Color(0x0DFFFFFF), // White with 0.05 opacity
+    onBackground: Color(0x0DFFFFFF),
+    // White with 0.05 opacity
     error: _darkFillColor,
     onError: _darkFillColor,
     onPrimary: _darkFillColor,
@@ -82,14 +82,14 @@ class GalleryThemeData {
 
   static final TextTheme _textTheme = TextTheme(
     headline4: GoogleFonts.montserrat(fontWeight: _bold, fontSize: 20.0),
-    caption: GoogleFonts.oswald(fontWeight: _semiBold, fontSize: 16.0),
     headline5: GoogleFonts.oswald(fontWeight: _medium, fontSize: 16.0),
-    subtitle1: GoogleFonts.montserrat(fontWeight: _medium, fontSize: 16.0),
-    overline: GoogleFonts.montserrat(fontWeight: _medium, fontSize: 12.0),
-    bodyText1: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 14.0),
-    subtitle2: GoogleFonts.montserrat(fontWeight: _medium, fontSize: 14.0),
-    bodyText2: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 16.0),
     headline6: GoogleFonts.montserrat(fontWeight: _bold, fontSize: 16.0),
+    caption: GoogleFonts.oswald(fontWeight: _semiBold, fontSize: 16.0),
+    overline: GoogleFonts.montserrat(fontWeight: _medium, fontSize: 12.0),
+    subtitle1: GoogleFonts.montserrat(fontWeight: _medium, fontSize: 16.0),
+    subtitle2: GoogleFonts.montserrat(fontWeight: _medium, fontSize: 14.0),
+    bodyText1: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 14.0),
+    bodyText2: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 16.0),
     button: GoogleFonts.montserrat(fontWeight: _semiBold, fontSize: 14.0),
   );
 }

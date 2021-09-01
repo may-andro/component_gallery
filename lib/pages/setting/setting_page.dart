@@ -1,7 +1,7 @@
-import 'package:component_gallery/pages/dashboard/widget/header.dart';
 import 'package:component_gallery/pages/setting/setting_provider.dart';
 import 'package:component_gallery/utils/adaptive.dart';
 import 'package:component_gallery/utils/constants.dart';
+import 'package:component_gallery/widgets/header_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -52,7 +52,7 @@ class SettingPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: ExcludeSemantics(
-        child: Header(
+        child: HeaderTextWidget(
           color: Theme.of(context).colorScheme.onSurface,
           text: 'Setting',
         ),

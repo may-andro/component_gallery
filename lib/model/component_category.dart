@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart' show describeEnum;
 
 enum ComponentCategory {
 	button,
@@ -8,8 +7,6 @@ enum ComponentCategory {
 
 
 extension ComponentCategoryExtension on ComponentCategory {
-	String get name => describeEnum(this);
-
 	String displayTitle() {
 		switch (this) {
 			case ComponentCategory.button:

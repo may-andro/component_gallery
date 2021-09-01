@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 enum DemoState {
-  options,
   info,
   code,
 }

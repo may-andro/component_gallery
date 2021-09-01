@@ -29,8 +29,6 @@ class ComponentDemoPage extends StatefulWidget {
 class _ComponentDemoPageState extends State<ComponentDemoPage> with TickerProviderStateMixin {
   late AnimationController _codeBackgroundColorController;
 
-  bool get _hasOptions => widget.component.configurations.length > 1;
-
   @override
   void initState() {
     super.initState();
@@ -61,7 +59,7 @@ class _ComponentDemoPageState extends State<ComponentDemoPage> with TickerProvid
       final contentHeight =
           mediaQuery.size.height - mediaQuery.padding.top - mediaQuery.padding.bottom - appBar.preferredSize.height;
       final maxSectionHeight = isDesktop ? contentHeight : contentHeight - 64;
-      final maxSectionWidth = mediaQuery.size.width * 0.4;
+      final maxSectionWidth = isDesktop ? mediaQuery.size.width * 0.4 : double.infinity;
 
       final Widget section = _buildSection(
         context,
@@ -79,39 +77,7 @@ class _ComponentDemoPageState extends State<ComponentDemoPage> with TickerProvid
 
       return Scaffold(
         body: LayoutBuilder(builder: (context, constraints) {
-          if (isDesktop) {
-          	Padding(
-              padding: const EdgeInsets.only(top: 136),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(40),
-                ),
-                child: page,
-              ),
-            );
-          }
-
-          return Stack(
-            children: [
-              Container(
-                // This is the background color of the gifs.
-                color: const Color(0xFF030303),
-                padding: EdgeInsets.only(
-                  bottom: isDisplayDesktop(context) ? componentDemoPeekDesktop : componentDemoPeekMobile,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 50),
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Text('Air Quality'),
-                  ),
-                ),
-              ),
-              Positioned(
-                child: page,
-              ),
-            ],
-          );
+          return page;
         }),
       );
     });
@@ -125,7 +91,7 @@ class _ComponentDemoPageState extends State<ComponentDemoPage> with TickerProvid
 
     final isDesktop = isDisplayDesktop(context);
     final colorScheme = Theme.of(context).colorScheme;
-    final appBarPadding = isDesktop ? 20.0 : 0.0;
+    final appBarPadding = isDesktop ? 16.0 : 0.0;
 
     final iconColor = colorScheme.onSurface;
     final selectedIconColor = colorScheme.primary;
@@ -144,15 +110,6 @@ class _ComponentDemoPageState extends State<ComponentDemoPage> with TickerProvid
         ),
       ),
       actions: [
-        if (_hasOptions)
-          IconButton(
-            icon: Icon(
-              Icons.tune,
-              color: currentDemoState == DemoState.options ? selectedIconColor : iconColor,
-            ),
-            tooltip: 'Options',
-            onPressed: () => _handleTap(DemoState.options, currentDemoState, componentDemoStateNotifier),
-          ),
         IconButton(
           icon: const Icon(Icons.info),
           tooltip: 'Information',
@@ -199,28 +156,31 @@ class _ComponentDemoPageState extends State<ComponentDemoPage> with TickerProvid
 
     late Widget section;
     switch (currentDemoState) {
-      case DemoState.options:
-        section = ComponentConfigWidget(
-          maxHeight: maxSectionHeight,
-          maxWidth: maxSectionWidth,
-          configurations: widget.component.configurations,
-          configIndex: currentConfigIndex,
-          onConfigChanged: (index) {
-            componentDemoStateNotifier.setSelectedConfigIndex(index);
-          },
-        );
-        break;
       case DemoState.info:
-        section = ComponentInfoWidget(
-          maxHeight: maxSectionHeight,
-          maxWidth: maxSectionWidth,
-          title: currentComponentConfiguration.title,
-          description: currentComponentConfiguration.description,
+        section = Column(
+          children: [
+            ComponentInfoWidget(
+              maxHeight: maxSectionHeight,
+              maxWidth: maxSectionWidth,
+              title: currentComponentConfiguration.title,
+              description: currentComponentConfiguration.description,
+            ),
+            ComponentConfigWidget(
+              maxHeight: maxSectionHeight,
+              maxWidth: maxSectionWidth,
+              configurations: widget.component.configurations,
+              configIndex: currentConfigIndex,
+              onConfigChanged: (index) {
+                componentDemoStateNotifier.setSelectedConfigIndex(index);
+              },
+            ),
+          ],
         );
         break;
       case DemoState.code:
         section = ComponentCodeWidget(
           maxHeight: maxSectionHeight,
+          maxWidth: maxSectionWidth,
           codeWidget: SourceCodeView(
             // filePath: 'lib/main.dart',
             filePath: currentComponentConfiguration.widgetPath,
@@ -322,8 +282,7 @@ class _ComponentDemoPageState extends State<ComponentDemoPage> with TickerProvid
   ) {
     late Widget page;
     final isDesktop = isDisplayDesktop(context);
-    final mediaQuery = MediaQuery.of(context);
-    final horizontalPadding = isDesktop ? mediaQuery.size.width * 0.12 : 0.0;
+    final horizontalPadding = isDesktop ? 81.0 : 0.0;
     final colorScheme = Theme.of(context).colorScheme;
 
     if (isDesktop) {

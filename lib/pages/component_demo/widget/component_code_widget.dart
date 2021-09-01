@@ -6,11 +6,13 @@ class ComponentCodeWidget extends StatelessWidget {
   const ComponentCodeWidget({
     Key? key,
     required this.maxHeight,
+    required this.maxWidth,
     required this.codeWidget,
   }) : super(key: key);
 
   final double maxHeight;
   final Widget codeWidget;
+  final double maxWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +23,9 @@ class ComponentCodeWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 16),
         child: Container(
+          constraints: BoxConstraints(maxHeight: maxHeight, maxWidth: maxWidth),
           color: isDesktop ? null : GalleryThemeData.darkThemeData.canvasColor,
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          height: maxHeight,
           child: codeWidget,
         ),
       ),

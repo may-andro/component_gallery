@@ -10,17 +10,24 @@ import 'package:component_gallery/model/component.dart';
 import 'package:component_gallery/model/component_category.dart';
 import 'package:component_gallery/model/component_configuration.dart';
 import 'package:flutter/material.dart';
+import 'package:component/button/prominent_button.dart';
 
 List<Component> buttonComponent() {
   return [
     Component(
       title: 'Prominent Button',
       icon: Icons.view_list_outlined,
-      subtitle: 'Used only during the shopping process to be used only one time per screen',
+      subtitle:
+          'Used only during the shopping process to be used only one time per screen, Used only during the shopping process to be used only one time per screen'
+          'Used only during the shopping process to be used only one time per screen, Used only during the shopping process to be used only one time per screen'
+          'Used only during the shopping process to be used only one time per screen, Used only during the shopping process to be used only one time per screen',
       configurations: [
         ComponentConfiguration(
           title: 'Prominent Button',
-          description: 'This configuration is used when state is enabled',
+          description:
+              'This configuration is used when state is enabled Used only during the shopping process to be used only one time per screen, Used only during the shopping process to be used only one time per screen'
+              'Used only during the shopping process to be used only one time per screen, Used only during the shopping process to be used only one time per screen'
+              'Used only during the shopping process to be used only one time per screen, Used only during the shopping process to be used only one time per screen',
           widgetPath: 'lib/component/button/prominent_button/config_active.dart',
           widget: ConfigActiveProminentButton(),
         ),
@@ -92,4 +99,30 @@ List<Component> buttonComponent() {
       category: ComponentCategory.button,
     ),
   ];
+}
+
+Widget getButtonComponentPreview() {
+  return SingleChildScrollView(
+    child: Column(
+      children: [
+        ProminentButton(
+          label: 'Prominent Button',
+          onPressed: () {},
+          buttonState: ProminentButtonState.active,
+        ),
+        SizedBox(height: 10),
+        ProminentButton(
+          label: 'Prominent Button',
+          onPressed: () {},
+          buttonState: ProminentButtonState.loading,
+        ),
+        SizedBox(height: 10),
+        ProminentButton(
+          label: 'Prominent Button',
+          onPressed: () {},
+          buttonState: ProminentButtonState.inactive,
+        ),
+      ],
+    ),
+  );
 }

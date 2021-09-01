@@ -6,12 +6,14 @@ class ComponentGroup {
   const ComponentGroup({
     required this.title,
     required this.category,
-    required this.icon,
     required this.components,
+    required this.componentPreviewWidget,
+    this.icon,
   });
 
   final String title;
   final ComponentCategory category;
-  final IconData icon;
+  final IconData? icon;
   final List<Component> components;
+  final Widget componentPreviewWidget;
 }
